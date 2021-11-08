@@ -21,8 +21,19 @@ function CryptoDecrypter() {
         setUserEntry(e.target[0].value)
     }
 
+    //Check the user word against the generated word
     const checkCode = () => {
         console.log("On Form Submit", answer, userEntry)
+        if (userEntry === answer) {
+            setUserScore(userScore +1)
+            generateRandomNums()
+            generateRandomWord()
+            setUserEntry(null)
+        } else {
+            generateRandomNums()
+            generateRandomWord()
+            setUserEntry(null)
+        }
     }
 
     //Generate the random numbers to be used with the cipher 
@@ -35,12 +46,20 @@ function CryptoDecrypter() {
             if (localRandomNums.indexOf(r) === -1 )
             localRandomNums.push(r)
         }
+
+        setRandomNums(localRandomNums)
     }
 
     //Grab a word from the list of possible words to use in the decryption code
     const generateRandomWord = () => {
 
         let localRandomWords = []
+    }
+
+    const checkScore = () => {
+        if (userScore === 10) {
+            console.log("You have passed the Crypto Dectyptor game!")
+        }
     }
 
     return <div id="cryptoDecrypterGame" className="container">
