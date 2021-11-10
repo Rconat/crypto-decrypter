@@ -9,6 +9,11 @@ function CryptoDecrypter() {
     const [randomNums, setRandomNums] = useState([])
     const [answer, setAnswer] = useState()
 
+    //Creating an array to map the alphabet using character codes
+    const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+    const alphabet = alpha.map((x) => String.fromCharCode(x))
+    console.log(alphabet);
+
     const textInput = React.useRef()
     const clearInput = () => (textInput.current.value = "")
 
@@ -67,7 +72,12 @@ function CryptoDecrypter() {
             <div className="col-6">
                 <h1 id="score">Score : {userScore}</h1>
             </div>
+            <div className="col-6">
+                <Timer/>
+            </div>
         </div>
+
+
     
     </div>
 
